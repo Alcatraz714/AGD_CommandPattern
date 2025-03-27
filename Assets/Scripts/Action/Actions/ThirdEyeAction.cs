@@ -16,7 +16,7 @@ namespace Command.Actions
             this.actorUnit = actorUnit;
             this.targetUnit = targetUnit;
 
-            actorUnit.PlayBattleAnimation(ActionType.BerserkAttack, CalculateMovePosition(targetUnit), OnActionAnimationCompleted);
+            actorUnit.PlayBattleAnimation(CommandType.BerserkAttack, CalculateMovePosition(targetUnit), OnActionAnimationCompleted);
         }
 
         public void OnActionAnimationCompleted()

@@ -9,7 +9,7 @@ namespace Command.Input
         private MouseInputHandler mouseInputHandler;
 
         private InputState currentState;
-        private ActionType selectedActionType;
+        private CommandType selectedActionType;
         private TargetType targetType;
 
         public InputService()
@@ -29,7 +29,7 @@ namespace Command.Input
                 mouseInputHandler.HandleTargetSelection(targetType);
         }
 
-        public void OnActionSelected(ActionType selectedActionType)
+        public void OnActionSelected(CommandType selectedActionType)
         {
             this.selectedActionType = selectedActionType;
             SetInputState(InputState.SELECTING_TARGET);
@@ -43,7 +43,7 @@ namespace Command.Input
             GameService.Instance.UIService.ShowTargetOverlay(playerID, selectedTargetType);
         }
 
-        private TargetType SetTargetType(ActionType selectedActionType) => targetType = GameService.Instance.ActionService.GetTargetTypeForAction(selectedActionType);
+        private TargetType SetTargetType(CommandType selectedActionType) => targetType = GameService.Instance.ActionService.GetTargetTypeForAction(selectedActionType);
 
         public void OnTargetSelected(UnitController targetUnit)
         {

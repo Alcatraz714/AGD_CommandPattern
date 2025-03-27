@@ -12,7 +12,7 @@ namespace Command.Player
         public UnitView UnitPrefab;
         public int MaxHealth;
         public int Power;
-        public List<ActionType> executableCommands;
+        public List<CommandType> executableCommands;
         public Vector3 EnemyBattlePositionOffset;
         public float MovementSpeed;
     }

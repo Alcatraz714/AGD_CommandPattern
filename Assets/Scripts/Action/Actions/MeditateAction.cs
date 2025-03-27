@@ -16,7 +16,7 @@ namespace Command.Actions
             this.actorUnit = actorUnit;
             this.targetUnit = targetUnit;
 
-            actorUnit.PlayBattleAnimation(ActionType.Meditate, CalculateMovePosition(targetUnit), OnActionAnimationCompleted);
+            actorUnit.PlayBattleAnimation(CommandType.Meditate, CalculateMovePosition(targetUnit), OnActionAnimationCompleted);
         }
 
         public void OnActionAnimationCompleted()

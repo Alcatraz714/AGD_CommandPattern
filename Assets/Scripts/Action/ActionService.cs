@@ -5,23 +5,23 @@ namespace Command.Actions
 {
     public class ActionService
     {
-        private Dictionary<ActionType, IAction> actions;
+        private Dictionary<CommandType, IAction> actions;
 
         public ActionService() => CreateActions();
 
         private void CreateActions()
         {
-            actions = new Dictionary<ActionType, IAction>();
-            actions.Add(ActionType.Attack, new AttackAction());
-            actions.Add(ActionType.Heal, new HealAction());
-            actions.Add(ActionType.AttackStance, new AttackStanceAction());
-            actions.Add(ActionType.Cleanse, new CleanseAction());
-            actions.Add(ActionType.Meditate, new MeditateAction());
-            actions.Add(ActionType.BerserkAttack, new BerserkAttackAction());
-            actions.Add(ActionType.ThirdEye, new ThirdEyeAction());
+            actions = new Dictionary<CommandType, IAction>();
+            actions.Add(CommandType.Attack, new AttackAction());
+            actions.Add(CommandType.Heal, new HealAction());
+            actions.Add(CommandType.AttackStance, new AttackStanceAction());
+            actions.Add(CommandType.Cleanse, new CleanseAction());
+            actions.Add(CommandType.Meditate, new MeditateAction());
+            actions.Add(CommandType.BerserkAttack, new BerserkAttackAction());
+            actions.Add(CommandType.ThirdEye, new ThirdEyeAction());
         }
 
-        public IAction GetActionByType(ActionType type)
+        public IAction GetActionByType(CommandType type)
         {
             if (actions.ContainsKey(type))
                 return actions[type];
@@ -29,6 +29,6 @@ namespace Command.Actions
                 throw new System.Exception($"No Action found for the type {type} in the dictionary");
         }
 
-        public TargetType GetTargetTypeForAction(ActionType actionType) => actions[actionType].TargetType;
+        public TargetType GetTargetTypeForAction(CommandType actionType) => actions[actionType].TargetType;
     }
 }

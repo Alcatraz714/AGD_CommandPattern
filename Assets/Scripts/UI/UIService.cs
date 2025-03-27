@@ -48,7 +48,7 @@ namespace Command.UI
 
         public void SetActionContainerAlignment(int activePlayerID) => actionSelectionController.SetActionContainerAlignment(activePlayerID);
 
-        public void ShowActionSelectionView(List<ActionType> executableActions)
+        public void ShowActionSelectionView(List<CommandType> executableActions)
         {
             actionSelectionController.Show(executableActions);
             GameService.Instance.InputService.SetInputState(InputState.SELECTING_ACTION);
