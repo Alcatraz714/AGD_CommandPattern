@@ -1,4 +1,4 @@
-using Command.Actions;
+using Command.Commands;
 
 /**  This script demonstrates implementation of the Observer Pattern.
 *  If you're interested in learning about Observer Pattern, 

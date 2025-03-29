@@ -1,4 +1,4 @@
-namespace Command.Actions
+namespace Command.Commands
 {
     public enum CommandType
     {
