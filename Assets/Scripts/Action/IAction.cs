@@ -11,9 +11,7 @@ namespace Command.Actions
     {
         public TargetType TargetType { get; }
 
-        public void PerformAction(UnitController actorUnit, UnitController targetUnit);
-
-        public bool IsSuccessful();
+        public void PerformAction(UnitController actorUnit, UnitController targetUnit, bool isSuccessful);
 
         public Vector3 CalculateMovePosition(UnitController targetUnit);
     } 
