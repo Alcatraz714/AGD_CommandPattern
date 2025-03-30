@@ -17,10 +17,12 @@ namespace Command.UI
         [SerializeField] private Color EnemyOverlayColor;
         [SerializeField] private Color ActionSelectionOverlayColor;
         [SerializeField] private Image backgroundImage;
+        [SerializeField] private Button undoButton;
 
         public void SetController(GameplayUIController controllerToSet) 
         {
             controller = controllerToSet;
+            undoButton.onClick.AddListener(controller.OnUndoButtonClicked);
             missedText.canvasRenderer.SetAlpha(0);
         }
 
