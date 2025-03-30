@@ -91,5 +91,31 @@ namespace Command.Player
             activeUnitIndex--;
             units[activeUnitIndex].StartUnitTurn();
         }
+
+        public void ResetCurrentActiveUnit()
+        {
+            //1. Reset the unit indicator (Arrow) for the currently active unit.
+            units[activeUnitIndex].ResetUnitIndicator();
+            
+            //2. Move to the previous unit in the list.
+            activeUnitIndex--;
+            
+            // Continue searching for a valid, living unit to make active.
+            while (activeUnitIndex >= 0)
+            {
+                //3. Check if the unit at the current index is not alive (i.e., it's defeated).
+                if (!units[activeUnitIndex].IsAlive())
+                {
+                    // Move to the previous unit in the list.
+                    activeUnitIndex--;
+                }
+                else
+                {
+                    //4. Activate the next living unit in the list and start its turn.
+                    units[activeUnitIndex].StartUnitTurn();
+                    break; // Exit the loop once an active unit is found.
+                }
+            }
+        }
     }
 }

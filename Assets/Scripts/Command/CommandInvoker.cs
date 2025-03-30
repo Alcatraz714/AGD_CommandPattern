@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Command.Commands;
+using Command.Main;
 
 public class CommandInvoker
 {
@@ -22,8 +23,23 @@ public class CommandInvoker
     public void ExecuteCommand(ICommand commandToExecute) => commandToExecute.Execute();
 
     /// <summary>
+    /// Undo a command, invoking its associated action reversal.
+    /// </summary>
+    /// <param name="commandToUndo">The command to be executed which reverses the action in stack top.</param>
+    public void Undo() => commandRegistry.Pop().Undo();
+
+    /// <summary>
     /// Register a command by adding it to the command registry stack.
     /// </summary>
     /// <param name="commandToRegister">The command to be registered.</param>
     public void RegisterCommand(ICommand commandToRegister) => commandRegistry.Push(commandToRegister);
+    
+    // Prevent underflow of command regsitery stack
+    private bool RegistryEmpty() => commandRegistry.Count == 0;
+
+    // prevent player from using Undo on 2nd player acitons
+    private bool CommandBelongsToActivePlayer() 
+    {
+        return(commandRegistry.Peek() as UnitCommand).commandData.ActorPlayerID == GameService.Instance.PlayerService.ActivePlayerID;
+    }
 }
