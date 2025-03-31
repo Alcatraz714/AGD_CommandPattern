@@ -46,6 +46,8 @@ namespace Command.UI
         }
 
         public void ResetBattleBackgroundOverlay() => gameplayView.ResetBackgroundOverlay();
+        
+        public void OnUndoButtonClicked() => GameService.Instance.CommandInvoker.Undo();
 
         public void ShowMissedAction() => gameplayView.ShowMissedText();
 
