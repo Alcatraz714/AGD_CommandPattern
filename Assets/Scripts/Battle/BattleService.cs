@@ -16,7 +16,11 @@ namespace Command.Battle
             SubscribeToEvents();
         }
 
-        private void SubscribeToEvents() => GameService.Instance.EventService.OnBattleSelected.AddListener(LoadBattle);
+        private void SubscribeToEvents()
+        {
+            GameService.Instance.EventService.OnBattleSelected.AddListener(LoadBattle);
+            GameService.Instance.EventService.OnReplayButtonClicked.AddListener(ReplayBattle);
+        }
 
         private void LoadBattle(int battleId)
         {
@@ -27,6 +31,8 @@ namespace Command.Battle
             GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.BATTLE_START);
             GameService.Instance.PlayerService.Init(battleDataToLoad.Player1Data, battleDataToLoad.Player2Data);
         }
+
+        private void ReplayBattle() => LoadBattle(currentBattleId);
 
         private BattleScriptableObject GetBattleDataByID(int battleId) => battleScriptableObjects.Find(battleSO => battleSO.BattleID == battleId);
     }

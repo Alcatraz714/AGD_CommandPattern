@@ -9,13 +9,15 @@ namespace Command.UI
         private BattleEndUIController controller;
         [SerializeField] private TextMeshProUGUI resultText;
         [SerializeField] private Button homeButton;
+        [SerializeField] private Button replayButton;// add this button ref in editor
 
         private void Start() => SubscribeToButtonClicks();
 
         private void SubscribeToButtonClicks()
-        {
-            homeButton.onClick.AddListener(controller.OnHomeButtonClicked);
-        }
+		{
+    		replayButton.onClick.AddListener(controller.OnReplayButtonClicked);
+    		homeButton.onClick.AddListener(controller.OnHomeButtonClicked);
+		}
 
         public void SetController(BattleEndUIController controllerToSet) => controller = controllerToSet;
 
