@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Command.Commands;
 using Command.Main;
@@ -5,6 +6,17 @@ using Command.Main;
 public class CommandInvoker
 {
     private Stack<ICommand> commandRegistry = new Stack<ICommand>();
+
+    public CommandInvoker() => SubscribeToEvents();
+
+    private void SubscribeToEvents() => GameService.Instance.EventService.OnReplayButtonClicked.AddListener(SetReplayStack);
+
+    public void SetReplayStack()
+    {
+        //using the saved commands stack which is command registery
+        GameService.Instance.ReplayService.SetCommandStack(commandRegistry);
+        commandRegistry.Clear();
+    }
 
     /// <summary>
     /// Process a command, which involves both executing it and registering it.
