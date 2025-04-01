@@ -2234,6 +2234,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9f1d2cf049ff604aab41d149ba596e9, type: 2}
   - {fileID: 11400000, guid: 32addf10f4370374993da88ffd77ac5c, type: 2}
   - {fileID: 11400000, guid: f6b3f84e1bf293a4d847b3c8ba69cb3f, type: 2}
+  - {fileID: 11400000, guid: cef71431f2279e44bb6b343d5d509f88, type: 2}
   sfxSource: {fileID: 363944623}
   bgMusicSource: {fileID: 927446004}
 --- !u!4 &1409757741
